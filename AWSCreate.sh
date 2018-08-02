@@ -44,21 +44,22 @@ printf "Creating Instances........................................ \n"
 id=$(aws ec2 run-instances --iam-instance-profile Name=FullAccess --image-id ami-b70554c8 --count 1 --instance-type t2.micro --key-name  $keypair1 --subnet-id $subnet_id --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=shell1_ec2_Adithya}]" --region us-east-1 --security-group-ids $security_group1 --query 'Instances[*].InstanceId')
 #aws ec2 terminate-instances --instance-ids $id
 printf " Instance was created. Instance ID is $id "
-sleep 5m
+
 
 
 
 
 id2=$(aws ec2 run-instances --iam-instance-profile Name=FullAccess --image-id ami-b70554c8 --count 1 --instance-type t2.micro --key-name   $keypair2 --subnet-id $subnet_id --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=shell2_ec2_Adithya}]" --region us-east-1 --security-group-ids $security_group2 --query 'Instances[*].InstanceId')
 printf " Instance was created. Instance ID is $id2 \n"
-sleep 5m
+
 
 
 
 
 id3=$(aws ec2 run-instances --iam-instance-profile Name=FullAccess --image-id ami-b70554c8 --count 1 --instance-type t2.micro --key-name $keypair2 --subnet-id $subnet_id --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=shell3_ec2_Adithya}]" --region us-east-1 --security-group-ids $security_group2 --query 'Instances[*].InstanceId')
 printf " Instance was created. Instance ID is $id3 \n"
-sleep 5m
+echo "Sleeping for 15 minutes for instances to start"
+sleep 15m
 
 
 
